@@ -44,12 +44,7 @@ function View(element, calendar, viewName) {
 	function opt(name, viewNameOverride) {
 		var v = options[name];
 		if (typeof v == 'object') {
-			if(name == 'resources') {
-				return v;
-			}
-			else {
-				return smartProperty(v, viewNameOverride || viewName);
-			}
+			return smartProperty(v, viewNameOverride || viewName);
 		}
 		return v;
 	}
