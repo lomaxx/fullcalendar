@@ -19,10 +19,14 @@ function ResourceWeekView(element, calendar) {
 	
 	function render(date, delta) {
 		if (delta) {
-			addDays(date, delta * 7);
+			var start = addDays(date, delta * opt('paginateResourceWeek'));
+			var end = addDays(cloneDate(start), 7);
 		}
-		var start = addDays(cloneDate(date), -((date.getDay() - opt('firstDay') + 7) % 7));
-		var end = addDays(cloneDate(start), 7);
+		else {
+			var start = addDays(cloneDate(date), -((date.getDay() - opt('firstDay') + 7) % 7));
+			var end = addDays(cloneDate(start), 7);
+		}
+
 		var visStart = cloneDate(start);
 		var visEnd = cloneDate(end);
 		var weekends = opt('weekends');

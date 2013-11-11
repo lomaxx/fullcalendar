@@ -21,14 +21,17 @@ function ResourceNextWeeksView(element, calendar) {
 	
 	function render(date, delta) {
 		var weekends = opt('weekends');
+		var weekDays = weekends ? 7 : 5;
 		
 		if (delta) {
-			addDays(date, delta * (opt('numberOfWeeks') * weekends ? 7 : 5));
+			var start = addDays(date, delta * opt('paginateResourceNextWeeks'));
+			var end = addDays(cloneDate(start), opt('numberOfWeeks') * 7);
+		}
+		else {
+			var start = addDays(cloneDate(date), -((date.getDay() - opt('firstDay') + weekDays) % weekDays));
+			var end = addWeeks(cloneDate(start), opt('numberOfWeeks'));
 		}
 
-		var weekDays = weekends ? 7 : 5;
-		var start = addDays(cloneDate(date), -((date.getDay() - opt('firstDay') + weekDays) % weekDays));
-		var end = addWeeks(cloneDate(start), opt('numberOfWeeks'));
 		var visStart = cloneDate(start);
 		var visEnd = cloneDate(end);
 

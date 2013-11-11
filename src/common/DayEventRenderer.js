@@ -164,44 +164,8 @@ function DayEventRenderer() {
 				right = seg.isEnd ? colContentRight(rightCol) : maxLeft;
 			}
 			
-			// TODO: better implementation for this one..
-			if (viewName == 'resourceMonth') {
-				// for resourceMonth view
-				leftCol = seg.start.getDate()-1;
-				rightCol = seg.end.getDate()-2;
-
-				if(!weekends) {
-					// Drop out weekends
-					weekendSumColStart=0	
-					weekendSumColEnd=0
-					
-					for(var j=0; j<=leftCol; j++) {
-						weekendTestDate = addDays(cloneDate(t.start), j);
-						
-						if(weekendTestDate.getDay() == 0 || weekendTestDate.getDay() == 6) {
-							weekendSumColStart++;
-						}
-					}
-					leftCol -= weekendSumColStart;
-					
-					if (seg.start.getDay() == 6 || seg.start.getDay() == 0) leftCol++;
-					
-					for(j=0; j<=rightCol; j++) {
-						weekendTestDate = addDays(cloneDate(t.start), j);
-						
-						if(weekendTestDate.getDay() == 0 || weekendTestDate.getDay() == 6) {
-							weekendSumColEnd++;
-						}
-					}
-					rightCol -= weekendSumColEnd;
-				}
-				
-				if(rightCol < 0) {
-					// end is in the next month so rightCol is the last column
-					rightCol = getColCnt()-1;
-				}
-			}
-			else if (viewName == 'resourceNextWeeks') {
+			// TODO: better implementation for this one.. 
+			if (viewName == 'resourceMonth' || viewName == 'resourceNextWeeks' || viewName == 'resourceWeek') {
 				leftCol = dateCell(seg.start).col;
 				rightCol = dateCell(seg.end).col-1;
 				if(!weekends) {

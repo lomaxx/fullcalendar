@@ -89,7 +89,11 @@ var defaults = {
 	
 	// ResourceNextWeeks week count
 	numberOfWeeks: 4,
-	weekPrefix: 'Week'
+	weekPrefix: 'Week',
+	
+	// resource week and resourceNextWeeks view default paginate
+	paginateResourceWeek: 7,
+	paginateResourceNextWeeks: 7,
 	
 };
 

@@ -517,36 +517,8 @@ function ResourceView(element, calendar, viewName) {
 		if (viewName == 'resourceDay') {
 			col = timeOfDayCol(date);
 		}
-		else if (viewName == 'resourceNextWeeks') {
-			// Start from first slot and test every date
-			year = date.getFullYear();
-			month = date.getMonth();
-			day = date.getDate();
-
-			for (var i=0; i < colCnt; i++) {
-				cmpDate = _cellDate(i);
-				cmpYear = cmpDate.getFullYear();
-				cmpMonth = cmpDate.getMonth();
-				cmpDay = cmpDate.getDate();
-				
-				if (year == cmpYear && month == cmpMonth && day == cmpDay) {
-					col = i;
-					break;
-				}
-				else if (cmpDate > date && !weekends) {
-					// No weekends in the calendar, this must be the right column!
-					col = i-1;
-					break;
-				}
-			};
-			
-			if (typeof col == 'undefined') {
-				// date is in next weekview, select last column
-				col = i;
-			}
-		}
 		else {
-			col = dayOfWeekCol(date.getDay());
+			col = Math.round((cloneDate(date, true)-t.visStart)/1000/60/60/24); //  TODO: handle weekends: false
 		}
 		return { col: col };
 	}
