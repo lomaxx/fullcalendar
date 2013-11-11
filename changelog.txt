@@ -1,3 +1,7 @@
+version 1.6.1.3 (11/11/13)
+	- added eventDropOutside callback which is triggered when event is dropped outside the calendar
+	- added paginateResourceWeek and paginateResourceNextWeeks options, view pagination.
+
 version 1.6.1.2 (9/25/13)
 	- Fixed a bug in ResourceNextWeeks starting day calculation
 	- Fixed issue #41 (event is not showing if endtime - starttime < 30 minute)
