@@ -81,7 +81,7 @@ function ResourceEventRenderer() {
 		else {
 			visEventsEnds = $.map(events, exclEndDay);
 		}
-		
+
 		for (i=0; i<rowCnt; i++) {
 			currentResource = resources[i].id;
 			row = sliceSegs(events, visEventsEnds, d1, d2);
@@ -223,9 +223,13 @@ function ResourceEventRenderer() {
 				}, ev, 'drag');
 			},
 			stop: function(ev, ui) {
-				hoverListener.stop();
+				var cell = hoverListener.stop();
 				clearOverlays();
 				trigger('eventDragStop', eventElement, event, ev, ui);
+				
+				if(!cell) {
+					trigger('eventDropOutside', eventElement, event, ev, ui);
+				}
 				if (viewName == 'resourceDay' && (minuteDelta || resourceDelta)) {
 					eventDrop(this, event, 0, minuteDelta, event.allDay, ev, ui, newResourceId);
 				}
