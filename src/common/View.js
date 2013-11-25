@@ -22,6 +22,7 @@ function View(element, calendar, viewName) {
 	t.hideEvents = hideEvents;
 	t.eventDrop = eventDrop;
 	t.eventResize = eventResize;
+	t.getShownEvents = getShownEvents;
 	// t.title
 	// t.start, t.end
 	// t.visStart, t.visEnd
@@ -39,7 +40,14 @@ function View(element, calendar, viewName) {
 	var eventElementsByID = {};
 	var options = calendar.options;
 	
-	
+	// Get currently shown events
+	function getShownEvents() {
+		evs = [];
+		for (id in eventElementsByID){
+			evs.push(eventsByID[id]);
+		}
+		return evs;
+	}
 	
 	function opt(name, viewNameOverride) {
 		var v = options[name];
