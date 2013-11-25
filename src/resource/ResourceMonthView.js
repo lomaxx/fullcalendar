@@ -18,13 +18,28 @@ function ResourceMonthView(element, calendar) {
 	
 	
 	function render(date, delta) {
-		if (delta) {
-			addMonths(date, delta * 1);
-			date.setDate(1);
+		if (delta === 100 || delta === -100) {
+			// 100 means we want to skip full month (largePrev/largeNext pressed)
+			var start = addMonths(date, (delta > 0 ? 1 : -1));
+			var end = addMonths(cloneDate(start), 1);
 		}
-		var start = cloneDate(date, true);
-		start.setDate(1);
-		var end = addMonths(cloneDate(start), 1);
+		else if (delta) {
+			if(opt('paginateResourceMonth') === 'month') {
+				var start = addMonths(date, delta * 1);
+				start.setDate(1);
+				var end = addMonths(cloneDate(start), 1);				
+			}
+			else {
+				var start = addDays(date, delta * opt('paginateResourceMonth'));
+				var end = addMonths(cloneDate(start), 1);
+			}
+		}
+		else {	
+			var start = cloneDate(date.setDate(1));	
+			start.setDate(1);	
+			var end = addMonths(cloneDate(start), 1);	
+		}
+
 		var visStart = cloneDate(start);
 		var visEnd = cloneDate(end);
 		var weekends = opt('weekends');

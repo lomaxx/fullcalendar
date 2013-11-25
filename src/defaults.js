@@ -63,6 +63,8 @@ var defaults = {
 	buttonText: {
 		prev: "<span class='fc-text-arrow'>&lsaquo;</span>",
 		next: "<span class='fc-text-arrow'>&rsaquo;</span>",
+		largePrev: "<span class='fc-text-arrow'>&laquo;</span>",
+		largeNext: "<span class='fc-text-arrow'>&raquo;</span>",
 		prevYear: "<span class='fc-text-arrow'>&laquo;</span>",
 		nextYear: "<span class='fc-text-arrow'>&raquo;</span>",
 		today: 'today',
@@ -91,9 +93,11 @@ var defaults = {
 	numberOfWeeks: 4,
 	weekPrefix: 'Week',
 	
-	// resource week and resourceNextWeeks view default paginate
+	// resource views default paginate
 	paginateResourceWeek: 7,
 	paginateResourceNextWeeks: 7,
+	paginateResourceMonth: 'month'
+	
 	
 };
 

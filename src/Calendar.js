@@ -18,6 +18,8 @@ function Calendar(element, options, eventSources, resourceSources) {
 	t.unselect = unselect;
 	t.prev = prev;
 	t.next = next;
+	t.largePrev = largePrev;
+	t.largeNext = largeNext;
 	t.prevYear = prevYear;
 	t.nextYear = nextYear;
 	t.today = today;
@@ -415,8 +417,15 @@ function Calendar(element, options, eventSources, resourceSources) {
 	function next() {
 		renderView(1);
 	}
+
+	function largePrev() {
+		renderView(-100);
+	}
 	
-	
+	function largeNext() {
+		renderView(100);
+	}
+
 	function prevYear() {
 		addYears(date, -1);
 		renderView();

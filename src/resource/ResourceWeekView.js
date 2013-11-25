@@ -8,7 +8,6 @@ function ResourceWeekView(element, calendar) {
 	// exports
 	t.render = render;
 	
-	
 	// imports
 	ResourceView.call(t, element, calendar, 'resourceWeek');
 	var opt = t.opt;
@@ -18,7 +17,12 @@ function ResourceWeekView(element, calendar) {
 	
 	
 	function render(date, delta) {
-		if (delta) {
+		if (delta === 100 || delta === -100) {
+			// 100 means we want to skip full week (largePrev/largeNext pressed)
+			var start = addDays(date, (delta > 0 ? 7 : -7));
+			var end = addDays(cloneDate(start), 7);
+		}
+		else if (delta) {
 			var start = addDays(date, delta * opt('paginateResourceWeek'));
 			var end = addDays(cloneDate(start), 7);
 		}
@@ -45,6 +49,4 @@ function ResourceWeekView(element, calendar) {
 		t.visEnd = visEnd;
 		renderBasic(getResources.length, getResources.length, weekends ? 7 : 5, false);
 	}
-	
-	
 }

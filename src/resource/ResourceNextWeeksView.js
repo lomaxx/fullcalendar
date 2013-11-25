@@ -23,6 +23,12 @@ function ResourceNextWeeksView(element, calendar) {
 		var weekends = opt('weekends');
 		var weekDays = weekends ? 7 : 5;
 		
+		if (delta === 100 || delta === -100) {
+			// 100 means we want to skip full view (largePrev/largeNext pressed)
+			var start = addDays(date, opt('numberOfWeeks') * (delta > 0 ? 7 : -7));
+			var end = addDays(cloneDate(start), opt('numberOfWeeks') * 7);
+		}
+		else 
 		if (delta) {
 			var start = addDays(date, delta * opt('paginateResourceNextWeeks'));
 			var end = addDays(cloneDate(start), opt('numberOfWeeks') * 7);
