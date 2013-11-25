@@ -32,7 +32,7 @@ function ResourceView(element, calendar, viewName) {
 	t.allDayBounds = allDayBounds;
 	t.getRowCnt = function() { return rowCnt };
 	t.getColCnt = function() { return colCnt };
-	t.getResources = calendar.fetchResources();
+	t.getResources = calendar.fetchResources(!calendar.options['refetchResources']);
 	t.getColWidth = function() { return colWidth };
 	t.getViewName = function() { return viewName };
 	t.getDaySegmentContainer = function() { return daySegmentContainer };
