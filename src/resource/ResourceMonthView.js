@@ -5,6 +5,7 @@ function ResourceMonthView(element, calendar) {
 	var t = this;
 	
 	
+	
 	// exports
 	t.render = render;
 	
@@ -35,9 +36,8 @@ function ResourceMonthView(element, calendar) {
 			}
 		}
 		else {	
-			var start = cloneDate(date.setDate(1));	
-			start.setDate(1);	
-			var end = addMonths(cloneDate(start), 1);	
+			var start = cloneDate(date.setDate(1), true);	
+			var end = addMonths(cloneDate(start.setDate(1), true), 1);	
 		}
 
 		var visStart = cloneDate(start);
