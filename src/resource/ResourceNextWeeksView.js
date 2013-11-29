@@ -30,7 +30,7 @@ function ResourceNextWeeksView(element, calendar) {
 		}
 		else 
 		if (delta) {
-			var start = addDays(date, delta * opt('paginateResourceNextWeeks'), false);
+			var start = addDays(t.visStart, delta * opt('paginateResourceNextWeeks'), false);
 			var end = addDays(cloneDate(start), opt('numberOfWeeks') * 7);
 		}
 		else {
