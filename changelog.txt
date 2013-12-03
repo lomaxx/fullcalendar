@@ -1,3 +1,5 @@
+version 1.6.1.6 (12/3/13)
+	- fixed a bug in event fetching when paginating was used
 version 1.6.1.5 (11/28/13)
 	- fixed a bug in calendar start time calculation
 version 1.6.1.4 (11/25/13)
