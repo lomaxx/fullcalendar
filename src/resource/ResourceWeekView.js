@@ -17,18 +17,16 @@ function ResourceWeekView(element, calendar) {
 	
 	
 	function render(date, delta) {
-		console.log(date);
 		if (delta === 100 || delta === -100) {
 			// 100 means we want to skip full week (largePrev/largeNext pressed)
 			var start = addDays(date, (delta > 0 ? 7 : -7), false);
 			var end = addDays(cloneDate(start), 7);
 		}
 		else if (delta) {
-			var start = addDays(t.visStart, delta * opt('paginateResourceWeek'), false);
+			var start = addDays(cloneDate(t.visStart), delta * opt('paginateResourceWeek'), false);
 			var end = addDays(cloneDate(start), 7);
 		}
 		else {
-			
 			var start = addDays(cloneDate(date, true), -((date.getDay() - opt('firstDay') + 7) % 7));
 			var end = addDays(cloneDate(start), 7);
 		}
