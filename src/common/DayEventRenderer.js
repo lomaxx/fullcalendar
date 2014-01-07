@@ -179,8 +179,9 @@ function DayEventRenderer() {
 				leftCol = timeOfDayCol(seg.start);
 				rightCol = timeOfDayCol(seg.end)-1;
 
-				if(((seg.end-seg.start)/1000/60) < opt('slotMinutes')) leftCol--;
-
+				if(((seg.end-seg.start)/1000/60) < opt('slotMinutes') && leftCol > 0) leftCol--;
+				if (leftCol > 0 && rightCol == -1) rightCol = 24;
+				if (leftCol == 0 && rightCol == -1) rightCol = 0;
 			}
 			
 			if (rtl) {
